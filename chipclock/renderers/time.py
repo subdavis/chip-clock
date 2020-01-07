@@ -7,8 +7,9 @@ from chipclock.renderers.segment import render_segment
 def render_ascii(value):
     formatted = time.ctime(value)
     dots = segment(value)
-    sys.stdout.write(f'{str(dots)}\r')
-    sys.stdout.flush()
+    print(dots)
+    # sys.stdout.write(f'{str(dots)}\r')
+    # sys.stdout.flush()
     return False # return whether or not it's animating
 
 def render_chip(pins):

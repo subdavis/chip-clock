@@ -21,5 +21,5 @@ def render_segment(left, right, pins, bits=4):
     for bit, pin in zip(orders, pins):
         leftval = (left >> bit) & 1
         rightval = (right >> bit) & 1
-        GPIO.output(pin[0], left)
-        GPIO.output(pin[1], right)
+        GPIO.output(pin[0], leftval)
+        GPIO.output(pin[1], rightval)
