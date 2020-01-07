@@ -3,6 +3,7 @@ import time
 import sys
 
 from chipclock.renderers.segment import render_segment
+from chipclock.renderers.animations import breathe
 
 def render_ascii(value):
     formatted = time.ctime(value)
@@ -11,12 +12,18 @@ def render_ascii(value):
     sys.stdout.flush()
     return False # return whether or not it's animating
 
-def render_chip(pins):
+def render_chip(renderfunc)
     def render(value):
         segments = segment(value)
         seconds = segments[2]
-        render_segment(seconds[0], seconds[1], pins)
+        if (round(seconds[1]) % 10) == 0:
+            breathe(renderfunc)
+            return True
+        else:
+            renderfunc(seconds[0], seconds[1])
+            return False
     return render
+
 
 def as_binary_digits(number):
     """
