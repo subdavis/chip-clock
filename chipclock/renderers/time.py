@@ -12,12 +12,12 @@ def render_ascii(value):
     sys.stdout.flush()
     return False # return whether or not it's animating
 
-def render_chip(renderfunc)
+def render_chip(renderfunc):
     def render(value):
         segments = segment(value)
         seconds = segments[2]
         if (round(seconds[1]) % 10) == 0:
-            breathe(renderfunc)
+            breathe(renderfunc, interval=0.1)
             return True
         else:
             renderfunc(seconds[0], seconds[1])
